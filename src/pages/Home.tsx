@@ -3,12 +3,15 @@ import Logo from "../assets/logo.svg";
 import "../styles/header.css";
 import "../styles/utility.css";
 import "../styles/solution.css"
+import "../styles/testimonials.css"
 import Menu from "../assets/hamburguer.svg";
 import Close from "../assets/close.svg";
 import Button from "../components/Button";
-
 import HeroRectangleOne from "../assets/images/HeroRectangleOne.png";
 import HeroRectangleTwo from "../assets/images/HeroRectangleTwo.png";
+import ProfileImageOne from "../assets/images/ProfileImageOne.png"
+import star from "../assets/star.svg"
+import starouter from "../assets/starouter.svg"
 import "../styles/hero.css";
 
 
@@ -16,22 +19,22 @@ export default function Home() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
 
     useEffect(() => {
-		const body = document.body;
-		if (showMobileMenu) {
-			body.style.overflow = "hidden";
-			body.style.position = "fixed";
-			body.style.width = "100%";
-		} else {
-			body.style.overflow = "auto";
-			body.style.position = "static";
-		}
+        const body = document.body;
+        if (showMobileMenu) {
+            body.style.overflow = "hidden";
+            body.style.position = "fixed";
+            body.style.width = "100%";
+        } else {
+            body.style.overflow = "auto";
+            body.style.position = "static";
+        }
 
-		return () => {
-			body.style.overflow = "auto";
-			body.style.position = "static";
-		};
-	}, [showMobileMenu]);
-    
+        return () => {
+            body.style.overflow = "auto";
+            body.style.position = "static";
+        };
+    }, [showMobileMenu]);
+
     return (
         <>
             <header className="container py-sm">
@@ -155,6 +158,47 @@ export default function Home() {
                 </div>
             </section>
 
+            <section id="testimonials">//perceba que está section só é fechada depois
+                <header>
+                    <span>
+                        <p className="desktop-only">
+                            Conselho de quem conhece
+                        </p>
+                        <h2>Cada cliente importa!</h2>
+                    </span>
+                    <p>
+                        Quem já pediu sabe da qualidade das nossas receitas, estamos tirando aquela ideia de que
+                        comida congelada tem de ser algo sem gosto, acompanhe abaixo os testemunhos de quem já comprou e aprovou.
+                    </p>
+                </header>
+
+                <section className="carousel">
+                    <div className="carousel-content"></div>
+                    <div className="carousel-card">
+                        <img src={ProfileImageOne} alt="Imagem perfil cliente" />
+                        <span className="testimony">
+                            <p>
+                                Certamente o mercado chinês de eletricos está bombando, só existe
+                                uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
+                            </p>
+                        </span>
+                        <span className="rating">
+                            <img src={star} alt="ícone estrela" width={22} height={20} />
+                            <img src={star} alt="ícone estrela" width={22} height={20} />
+                            <img src={star} alt="ícone estrela" width={22} height={20} />
+                            <img src={star} alt="ícone estrela" width={22} height={20} />
+                            <img src={starouter} alt="ícone estrela sem fundo" width={20} height={22} />
+                        </span>
+                        <span className="names">
+                            <p>Ellon Ma</p>
+                            <p>CEO BING CHILLING</p>
+                        </span>
+                    </div>
+                    <div className="carousel-content">
+                    //Repetição dos cartões com os mesmos dados
+                    </div>
+                </section>
+            </section>
         </>
     )
 }
