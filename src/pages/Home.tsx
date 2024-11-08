@@ -6,6 +6,7 @@ import "../styles/solution.css"
 import "../styles/testimonials.css"
 import Menu from "../assets/hamburguer.svg";
 import Close from "../assets/close.svg";
+import Check from "../assets/check.svg";
 import Button from "../components/Button";
 import HeroRectangleOne from "../assets/images/HeroRectangleOne.png";
 import HeroRectangleTwo from "../assets/images/HeroRectangleTwo.png";
@@ -13,10 +14,12 @@ import ProfileImageOne from "../assets/images/ProfileImageOne.png"
 import star from "../assets/star.svg"
 import starouter from "../assets/starouter.svg"
 import "../styles/hero.css";
+import "../styles/pricing.css";
 
 
 export default function Home() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const [email, setMail] = useState ("");
 
     useEffect(() => {
         const body = document.body;
@@ -158,7 +161,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="testimonials">//perceba que está section só é fechada depois
+            <section id="testimonials">
                 <header>
                     <span>
                         <p className="desktop-only">
@@ -199,6 +202,50 @@ export default function Home() {
                     </div>
                 </section>
             </section>
-        </>
-    )
+
+            <section id="pricing" className="container">
+                <header>
+                    <p className="desktop-only">Planos e preços</p>
+                    <h2>Nossos planos</h2>
+                </header>
+                <section className="even-columns gap-1.5">
+                    <div className="pricing-card">
+                        <span className="plan">
+                            <h3>Básico</h3>
+                            <p>Você tem direito a uma prova das comidas DonaFrost.</p>
+                        </span><h2>Grátis</h2><Button text="Pedir agora" secondary key="free" /><span className="hr" /><span className="features">
+                            <img src={Check} alt="ícone check" width={24} height={24} />
+                            <p>Retire na loja</p>
+                        </span><span className="features">
+                            <img src={Check} alt="ícone check" width={24} height={24} />
+                            <p>Apenas 1 por CPF</p>
+                        </span>
+                    </div>
+
+                    <div className="pricing-card premium">
+                        <span className="bonus"><p>1º MÊS COM DESCONTO</p></span><span className="plan">
+                            <h3>Premium</h3>
+                            <p>Para quem precisa de uma marmita diária, muito saborosa.</p>
+                        </span><span className="price">
+                            <h2>R$ 89,90</h2>
+                            <p>/mês</p>
+                        </span><Button text="Pedir agora" key="premium" /><span className="hr" /><span className="features">
+                            <img src={Check} alt="ícone check" width={24} height={24} />
+                            <p>2 Entregas</p>
+                        </span><span className="features">
+                            <img src={Check} alt="ícone check" width={24} height={24} />
+                            <p>5 Refeições por semana</p>
+                        </span><span className="features">
+                            <img src={Check} alt="ícone check" width={24} height={24} />
+                            <p>2 Sucos por semana</p>
+                        </span>
+                    </div>
+                </section>
+            </section>
+
+            <section id="contact">
+                <input type="text" value={email}></input>
+            </section>
+            </>
+            )
 }
