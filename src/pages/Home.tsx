@@ -10,6 +10,13 @@ import Check from "../assets/check.svg";
 import Button from "../components/Button";
 import HeroRectangleOne from "../assets/images/HeroRectangleOne.png";
 import HeroRectangleTwo from "../assets/images/HeroRectangleTwo.png";
+import itemOne from "../assets/images/item1.png";
+import itemTwo from "../assets/images/item2.png";
+import itemThree from "../assets/images/item3.png";
+import itemFour from "../assets/images/item4.png";
+import userOne from "../assets/images/userone.png";
+import userTwo from "../assets/images/usertwo.png";
+import userThree from "../assets/images/userthree.png";
 import "../styles/hero.css";
 import "../styles/pricing.css";
 import Card from "../components/Cards";
@@ -134,13 +141,13 @@ export default function Home() {
                     Feito de pessoa para pessoas.
                 </h2>
                 <div className="card-container even-columns">
-                    <Card title="Roupas" description="Entregando estilos e influência" image="src/assets/images/item1.png"/>
+                    <Card title="Roupas" description="Entregando estilos e influência" image={itemOne}/>
 
-                    <Card title="Bolsas" description="Para carregar o peso de sua personalidade" image="src/assets/images/item2.png"/>
+                    <Card title="Bolsas" description="Para carregar o peso de sua personalidade" image={itemTwo}/>
 
-                    <Card title="Tapetes" description="Para o aconchego do que chamamos de lar" image="src/assets/images/item3.png"/>
+                    <Card title="Tapetes" description="Para o aconchego do que chamamos de lar" image={itemThree}/>
 
-                    <Card title="Amigurumi" description="Bonequinhos de crochê para vossa companhia" image="src/assets/images/item4.png"/>
+                    <Card title="Amigurumi" description="Bonequinhos de crochê para vossa companhia" image={itemFour}/>
                 </div>
 
             </div>
@@ -165,19 +172,19 @@ export default function Home() {
                     <div className="carousel-content">
                     
                     <TCard comentary="Realizei a compra de uma bolsa de crochê, e estou realmente impressionada com a qualidade."
-                    image="src/assets/images/userone.png"
+                    image={userOne}
                     stars={5}
                     name="Wanessa Wolf"
                     ocupation="Streamer"/>
 
                     <TCard comentary="Bonjour, fiz o pedido de tapete babadeiro, entregou muita beleza, amei o Uncinetto. Merci!"
-                    image="src/assets/images/usertwo.png"
+                    image={userTwo}
                     stars={4}
                     name="Inês Brasil"
                     ocupation="Cantora"/>
 
                     <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Da pra perceber que é feito com muito carinho."
-                    image="src/assets/images/userthree.png"
+                    image={userThree}
                     stars={5}
                     name="Bibble"
                     ocupation="Pet da Barbie"/>
@@ -186,19 +193,19 @@ export default function Home() {
                     <div className="carousel-content">
                     
                     <TCard comentary="Realizei a compra de uma bolsa de crochê, e estou realmente impressionada com a qualidade."
-                    image="src/assets/images/userone.png"
+                    image={userOne}
                     stars={5}
                     name="Wanessa Wolf"
                     ocupation="Streamer"/>
 
                     <TCard comentary="Bonjour, fiz o pedido de tapete babadeiro, entregou muita beleza, amei o Uncinetto. Merci!"
-                    image="src/assets/images/usertwo.png"
+                    image={userTwo}
                     stars={4}
                     name="Inês Brasil"
                     ocupation="Cantora"/>
 
-                    <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Da pra perceber o carinho!"
-                    image="src/assets/images/userthree.png"
+                    <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Da pra perceber que é feito com muito carinho."
+                    image={userThree}
                     stars={5}
                     name="Bibble"
                     ocupation="Pet da Barbie"/>
