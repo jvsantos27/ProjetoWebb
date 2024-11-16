@@ -8,6 +8,11 @@
     z-index: 1;
 }
 
+.solution-title {
+    margin-bottom: 2rem; 
+    text-align: center;
+}
+
 #hero>img {
     position: absolute;
     right: 0;

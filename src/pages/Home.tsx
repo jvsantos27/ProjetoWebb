@@ -10,12 +10,10 @@ import Check from "../assets/check.svg";
 import Button from "../components/Button";
 import HeroRectangleOne from "../assets/images/HeroRectangleOne.png";
 import HeroRectangleTwo from "../assets/images/HeroRectangleTwo.png";
-import ProfileImageOne from "../assets/images/ProfileImageOne.png"
-import star from "../assets/star.svg"
-import starouter from "../assets/starouter.svg"
 import "../styles/hero.css";
 import "../styles/pricing.css";
-
+import Card from "../components/Cards";
+import TCard from "../components/TestimonialCard";
 
 export default function Home() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -42,8 +40,8 @@ export default function Home() {
         <>
             <header className="container py-sm">
                 <nav className="flex items-center justify-between">
-                    <img src={Logo} alt="Logo Dona
-                    Frost" width={220} height={80} />
+                    <img src={Logo} alt="Logo Uncinetto" 
+                    width={220} height={80} />
                     <div className="desktop-only">
                         <ul className="flex gap-1">
                             <li>
@@ -67,7 +65,7 @@ export default function Home() {
                     <div className="desktop-only">
                         <div className="flex items-center">
                             <a className="reverse-color ml-lg" href="">Login</a>
-                            <Button text="Cadastre-se" />
+                            <Button func={() => console.log("teste")}text="Cadastre-se"/>
                         </div>
                     </div>
 
@@ -122,44 +120,32 @@ export default function Home() {
                     <p>Cada ponto tricotado transforma seu estilo com elegância e aconchego.
                     </p>
                     <div className="flex gap-1">
-                        <span><Button text="Cadastre-se" /></span>
+                        <span> <Button func={() => console.log("teste")}text="Cadastre-se"/></span>
                         <span className="desktop-only">
-                            <Button text="Veja mais" secondary />
+                        <Button func={() => console.log("teste")}text="Veja mais" secondary/>
                         </span>
                     </div>
                 </div>
             </section>
 
             <section id="solution">
-                <div className="container content">
-                    <h2 className="item-subtitle">Feito de pessoa para pessoas.</h2>
-                    <div id="items-list">
-                        <div id="item">
-                            <img src="src/assets/images/item1.png" className="item-image1" alt=""></img>
-                            <h3 className="item-name">Roupas</h3>
-                            <span className="item-description">Entregando estilos e influência</span>
-                        </div>
+            <div className="container content">
+                <h2 className="solution-title">
+                    Feito de pessoa para pessoas.
+                </h2>
+                <div className="card-container even-columns">
+                    <Card title="Roupas" description="Entregando estilos e influência" image="src/assets/images/item1.png"/>
 
-                        <div id="item">
-                            <img src="src/assets/images/item2.png" className="item-image2" alt=""></img>
-                            <h3 className="item-name">Bolsas</h3>
-                            <span className="item-description">Para carregar o peso de sua personalidade</span>
-                        </div>
+                    <Card title="Bolsas" description="Para carregar o peso de sua personalidade" image="src/assets/images/item2.png"/>
 
-                        <div id="item">
-                            <img src="src/assets/images/item3.png" className="item-image3" alt=""></img>
-                            <h3 className="item-name">Tapetes</h3>
-                            <span className="item-description">Para o aconchego do que chamamos de lar</span>
-                        </div>
+                    <Card title="Tapetes" description="Para o aconchego do que chamamos de lar" image="src/assets/images/item3.png"/>
 
-                        <div id="item">
-                            <img src="src/assets/images/item4.png" className="item-image4" alt=""></img>
-                            <h3 className="item-name">Amigurumi</h3>
-                            <span className="item-description">Bonequinhos de crochê para vossa companhia</span>
-                        </div>
-                    </div>
+                    <Card title="Amigurumi" description="Bonequinhos de crochê para vossa companhia" image="src/assets/images/item4.png"/>
                 </div>
+
+            </div>
             </section>
+        
 
             <section id="testimonials">
                 <header>
@@ -170,35 +156,52 @@ export default function Home() {
                         <h2>Cada cliente importa!</h2>
                     </span>
                     <p>
-                        Quem já pediu sabe da qualidade das nossas receitas, estamos tirando aquela ideia de que
-                        comida congelada tem de ser algo sem gosto, acompanhe abaixo os testemunhos de quem já comprou e aprovou.
+                        Feedback de quem comprou e aprovou a qualidade de cada peça. 
+                        Acompanhe abaixo os testemunhos de quem já comprou na plataforma.
                     </p>
                 </header>
 
                 <section className="carousel">
-                    <div className="carousel-content"></div>
-                    <div className="carousel-card">
-                        <img src={ProfileImageOne} alt="Imagem perfil cliente" />
-                        <span className="testimony">
-                            <p>
-                                Certamente o mercado chinês de eletricos está bombando, só existe
-                                uma coisa melhor do que isso, provar uma boa comida DonaFrost no almoço.
-                            </p>
-                        </span>
-                        <span className="rating">
-                            <img src={star} alt="ícone estrela" width={22} height={20} />
-                            <img src={star} alt="ícone estrela" width={22} height={20} />
-                            <img src={star} alt="ícone estrela" width={22} height={20} />
-                            <img src={star} alt="ícone estrela" width={22} height={20} />
-                            <img src={starouter} alt="ícone estrela sem fundo" width={20} height={22} />
-                        </span>
-                        <span className="names">
-                            <p>Ellon Ma</p>
-                            <p>CEO BING CHILLING</p>
-                        </span>
-                    </div>
                     <div className="carousel-content">
-                    //Repetição dos cartões com os mesmos dados
+                    
+                    <TCard comentary="Realizei a compra de uma bolsa de crochê, e estou realmente impressionada com a qualidade."
+                    image="src/assets/images/userone.png"
+                    stars={5}
+                    name="Wanessa Wolf"
+                    ocupation="Streamer"/>
+
+                    <TCard comentary="Bonjour, fiz o pedido de tapete babadeiro, entregou muita beleza, amei o Uncinetto. Merci!"
+                    image="src/assets/images/usertwo.png"
+                    stars={4}
+                    name="Inês Brasil"
+                    ocupation="Cantora"/>
+
+                    <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Da pra perceber que é feito com muito carinho."
+                    image="src/assets/images/userthree.png"
+                    stars={5}
+                    name="Bibble"
+                    ocupation="Pet da Barbie"/>
+                    </div>
+                    
+                    <div className="carousel-content">
+                    
+                    <TCard comentary="Realizei a compra de uma bolsa de crochê, e estou realmente impressionada com a qualidade."
+                    image="src/assets/images/userone.png"
+                    stars={5}
+                    name="Wanessa Wolf"
+                    ocupation="Streamer"/>
+
+                    <TCard comentary="Bonjour, fiz o pedido de tapete babadeiro, entregou muita beleza, amei o Uncinetto. Merci!"
+                    image="src/assets/images/usertwo.png"
+                    stars={4}
+                    name="Inês Brasil"
+                    ocupation="Cantora"/>
+
+                    <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Da pra perceber o carinho!"
+                    image="src/assets/images/userthree.png"
+                    stars={5}
+                    name="Bibble"
+                    ocupation="Pet da Barbie"/>
                     </div>
                 </section>
             </section>
@@ -212,32 +215,43 @@ export default function Home() {
                     <div className="pricing-card">
                         <span className="plan">
                             <h3>Básico</h3>
-                            <p>Você tem direito a uma prova das comidas DonaFrost.</p>
-                        </span><h2>Grátis</h2><Button text="Pedir agora" secondary key="free" /><span className="hr" /><span className="features">
-                            <img src={Check} alt="ícone check" width={24} height={24} />
-                            <p>Retire na loja</p>
+                            <p>Compras e vendas</p>
+                        </span><h2>Grátis</h2><Button func={() => console.log("teste")}text="Pedir agora" secondary key="free" /><span className="hr" /><span className="features">
                         </span><span className="features">
                             <img src={Check} alt="ícone check" width={24} height={24} />
-                            <p>Apenas 1 por CPF</p>
+                            <p>Direito de comprar e vender</p>
                         </span>
                     </div>
 
                     <div className="pricing-card premium">
                         <span className="bonus"><p>1º MÊS COM DESCONTO</p></span><span className="plan">
                             <h3>Premium</h3>
-                            <p>Para quem precisa de uma marmita diária, muito saborosa.</p>
+                            <p>Envio de caixas com diversos produtos.</p>
                         </span><span className="price">
-                            <h2>R$ 89,90</h2>
+                            <h2>R$ 99,90</h2>
                             <p>/mês</p>
-                        </span><Button text="Pedir agora" key="premium" /><span className="hr" /><span className="features">
+                        </span><Button func={() => console.log("teste")}text="Pedir agora" key="premium" /><span className="hr" /><span className="features">
                             <img src={Check} alt="ícone check" width={24} height={24} />
-                            <p>2 Entregas</p>
+                            <p>Produtos diversos todo mês!</p>
                         </span><span className="features">
                             <img src={Check} alt="ícone check" width={24} height={24} />
-                            <p>5 Refeições por semana</p>
+                            <p>01 entrega por mês</p>
                         </span><span className="features">
                             <img src={Check} alt="ícone check" width={24} height={24} />
-                            <p>2 Sucos por semana</p>
+                            <p>Bolsas, amigurumis e muito mais!</p>
+                        </span>
+                    </div>
+
+                    <div className="pricing-card">
+                        <span className="plan">
+                            <h3>Vendas</h3>
+                            <p>Recomendações por toda a plataforma</p>
+                        </span><h2>R$ 45,90</h2><Button func={() => console.log("teste")}text="Pedir agora" secondary key="free" /><span className="hr" /><span className="features">
+                            <img src={Check} alt="ícone check" width={24} height={24} />
+                            <p>Notificações de clientes</p>
+                        </span><span className="features">
+                            <img src={Check} alt="ícone check" width={24} height={24} />
+                            <p>Produtos mais engajados</p>
                         </span>
                     </div>
                 </section>
