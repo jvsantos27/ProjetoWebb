@@ -38,6 +38,13 @@
   font-size: 1rem;
 }
 
+#testimonials #subtitle {
+  color: #522121;
+  max-width: 2000px;
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+}
+
 .carousel {
   display: flex;
   width: 90%;
