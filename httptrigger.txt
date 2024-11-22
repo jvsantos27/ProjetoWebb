@@ -1,0 +1,42 @@
+const sgMail = require('@sendgrid/mail');
+
+const sendGridApiKey = process.env.SENDGRID_API_KEY;
+sgMail.setApiKey(sendGridApiKey);
+
+module.exports = async function (context, req) {
+    context.log(`HTTP function processed request for URL: "${req.url}"`);
+
+    try {
+        const { to, subject, text } = req.body;
+
+        if (!to || !subject || !text) {
+            context.res = {
+                status: 400,
+                body: "Os campos 'to', 'subject' e 'text' são obrigatórios."
+            };
+            return;
+        }
+
+        const msg = {
+            to,
+            from: process.env.SENDGRID_FROM_EMAIL,
+            subject,
+            text,
+        };
+
+        await sgMail.send(msg);
+        context.log(`E-mail enviado com sucesso para ${to}`);
+
+        context.res = {
+            status: 200,
+            body: "E-mail enviado com sucesso!"
+        };
+    } catch (error) {
+        context.log("Erro ao enviar o e-mail:", error);
+
+        context.res = {
+            status: 500,
+            body: "Ocorreu um erro ao enviar o e-mail. Tente novamente mais tarde."
+        };
+    }
+};
