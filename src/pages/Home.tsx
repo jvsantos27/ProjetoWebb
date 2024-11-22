@@ -62,7 +62,7 @@ export default function Home() {
         }
 
         try {
-            const response = await fetch("https://joauemail.azurewebsites.net/", {
+            const response = await fetch("/api", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
