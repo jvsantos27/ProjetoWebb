@@ -30,6 +30,7 @@ export default function Home() {
     const [loading, setLoading] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [message, setMessage] = useState("");
 
     useEffect(() => {
         const body = document.body;
@@ -54,16 +55,22 @@ export default function Home() {
         setSuccessMessage("");
         setErrorMessage("");
 
+        if (!email || !message) {
+            setErrorMessage("Por favor, preencha todos os campos.");
+            setLoading(false);
+            return;
+        }
+
         try {
-            const response = await fetch("https://jaosnt-mail.azurewebsites.net/", {
+            const response = await fetch("https://joauemail.azurewebsites.net/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     to: email,
-                    subject: "Bem-vindo à nossa plataforma!",
-                    text: "Obrigado por se inscrever! Estamos ansiosos para ter você conosco.",
+                    subject: "Notificação Uncinetto",
+                    text: message,
                 }),
             });
 
@@ -72,15 +79,12 @@ export default function Home() {
             if (response.ok) {
                 console.log("E-mail enviado com sucesso!");
                 setSuccessMessage("E-mail enviado com sucesso!");
+                setEmail("");
+                setMessage("");
             } else {
-                try {
-                    const errorData = await response.json();
-                    console.error("Erro ao enviar e-mail. Detalhes:", errorData);
-                    setErrorMessage(errorData.body || "Erro ao enviar o e-mail.");
-                } catch (error) {
-                    console.error("Erro ao processar o corpo da resposta:", error);
-                    setErrorMessage("Erro ao enviar o e-mail e processar a resposta.");
-                }
+                const errorData = await response.json();
+                console.error("Erro ao enviar e-mail. Detalhes:", errorData);
+                setErrorMessage(errorData.error || "Erro ao enviar o e-mail.");
             }
         } catch (error) {
             console.error("Erro ao conectar com o servidor:", error);
@@ -230,7 +234,7 @@ export default function Home() {
                             name="Inês Brasil"
                             ocupation="Cantora" />
 
-                        <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Da pra perceber que é feito com muito carinho."
+                        <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Percece-se o carinho que se entrega."
                             image={userThree}
                             stars={5}
                             name="Bibble"
@@ -251,7 +255,7 @@ export default function Home() {
                             name="Inês Brasil"
                             ocupation="Cantora" />
 
-                        <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Da pra perceber que é feito com muito carinho."
+                        <TCard comentary="Os amigurumis do site são incríveis, muito autênticos. Percece-se o carinho que se entrega."
                             image={userThree}
                             stars={5}
                             name="Bibble"
@@ -314,7 +318,7 @@ export default function Home() {
             <section id="contact" className="container contact-section">
                 <header className="container-content">
                     <h2>Entre em Contato</h2>
-                    <p >Preencha o formulário abaixo para nos enviar uma mensagem ou tirar dúvidas.</p>
+                    <p>Preencha o formulário abaixo para nos enviar uma mensagem ou tirar dúvidas.</p>
                 </header>
 
                 <div className="contact-form">
@@ -335,6 +339,9 @@ export default function Home() {
                         />
                         <textarea
                             placeholder="Escreva sua mensagem"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            required
                             className="form-textarea"
                         ></textarea>
                         <button
@@ -351,41 +358,41 @@ export default function Home() {
             </section>
 
             <section id="footage">
-    <div className="footer-content">
-        <div className="footer-section about">
-            <h2>Sobre Nós</h2>
-            <p>
-                Uncinetto é a sua plataforma para encontrar produtos de crochê e tricô feitos com carinho e atenção aos detalhes. 
-                Transformamos criatividade em estilo para todos.
-            </p>
-        </div>
+                <div className="footer-content">
+                    <div className="footer-section about">
+                        <h2>Sobre Nós</h2>
+                        <p>
+                            Uncinetto é a sua plataforma para encontrar produtos de crochê e tricô feitos com carinho e atenção aos detalhes.
+                            Transformamos criatividade em estilo para todos.
+                        </p>
+                    </div>
 
-        <div className="footer-section links">
-            <h2>Links Rápidos</h2>
-            <ul>
-                <li><a href="#solution">Soluções</a></li>
-                <li><a href="#testimonials">Depoimentos</a></li>
-                <li><a href="#pricing">Preços</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </div>
+                    <div className="footer-section links">
+                        <h2>Links Rápidos</h2>
+                        <ul>
+                            <li><a href="#solution">Soluções</a></li>
+                            <li><a href="#testimonials">Depoimentos</a></li>
+                            <li><a href="#pricing">Preços</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                        </ul>
+                    </div>
 
-        <div className="footer-section contact">
-            <h2>Contato</h2>
-            <p>Email: contato@uncinetto.com</p>
-            <p>Telefone: +55 11 98765-4321</p>
-            <div className="social-icons">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-            </div>
-        </div>
-    </div>
-    <div className="footer-bottom">
-        <p>© 2024 Uncinetto. Todos os direitos reservados.</p>
-        <a href="/privacy-policy">Política de Privacidade</a> | <a href="/terms-of-service">Termos de Serviço</a>
-    </div>
-</section>
+                    <div className="footer-section contact">
+                        <h2>Contato</h2>
+                        <p>Email: contato@uncinetto.com</p>
+                        <p>Telefone: +55 11 98765-4321</p>
+                        <div className="social-icons">
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="footer-bottom">
+                    <p>© 2024 Uncinetto. Todos os direitos reservados.</p>
+                    <a href="/privacy-policy">Política de Privacidade</a> | <a href="/terms-of-service">Termos de Serviço</a>
+                </div>
+            </section>
         </>
     )
 }

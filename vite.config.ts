@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://jaosnt-mail.azurewebsites.net/api/httpTrigger1',
+        target: 'https://joauemail.azurewebsites.net/api/httptrigger1',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
