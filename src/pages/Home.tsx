@@ -24,6 +24,7 @@ import TCard from "../components/TestimonialCard";
 import "../styles/contact.css";
 import "../styles/footage.css";
 
+
 export default function Home() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const [email, setEmail] = useState("");
@@ -62,7 +63,7 @@ export default function Home() {
         }
 
         try {
-            const response = await fetch("/api", {
+            const response = await fetch("https://joaoemail.azurewebsites.net/api/httptrigger1", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@azure/functions": "^4.0.0",
+    "@sendgrid/mail": "^8.1.4",
     "lambda-arch": "file:"
   },
   "main": "src/{index.js,functions/*.js}"
